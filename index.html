@@ -11,20 +11,25 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="mail-wrapper">
-            <label for="mail">inserire la mail da vedere nella lista</label>
-            <input type="email" name="mail" id="mail">
-            <button id="mailCheck">controlla</button>
-            <div id="mailOutput"></div>
-            <div id="mailError" class="text-danger"></div>
-        </div>
-        <div id="dice-wrapper">
-            <label for="dice">premere "lancia il dado per generare il dado</label>
-            <button name="dice" id="dice">Lancia</button>
-            <div class="dice-output-wrapper">
-                <div id="diceResult"></div>
+    <div class="container d-flex flex-column p-5 align-items-center">
+        <div id="inner-container">
+            <div id="mail-wrapper" class="pb-5">
+                <div class="d-flex flex-row align-items-center gap-4">
+                    <label for="mail" class="h4">inserire la mail da vedere nella lista</label>
+                    <input type="email" name="mail" id="mail">
+                    <button id="mailCheck" class="btn btn-primary">controlla</button>
+                </div>
+                <div id="mailOutput"></div>
+                <div id="mailError" class="text-danger"></div>
+            </div>
+            <div id="dice-wrapper">
+                <div class="d-flex flex-row align-items-center gap-4">
+                    <label for="dice" class="h4">premere "lancia il dado per generare il dado</label>
+                    <button name="dice" id="dice" class="btn btn-primary">Lancia</button>
 
+                </div>
+
+                <div id="diceResult"></div>
             </div>
         </div>
     </div>
