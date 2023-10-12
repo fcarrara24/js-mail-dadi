@@ -14,6 +14,8 @@ const mailCheck = document.getElementById('mailCheck');
 //output
 const mailError = document.getElementById('mailError');
 const mailOutput = document.getElementById('mailOutput');
+const diceList = document.getElementsByClassName('diceRoll');
+
 
 mailCheck.addEventListener('click', function () {
 
@@ -62,6 +64,7 @@ roll = document.getElementById('dice');
 roll.addEventListener('click', function () {
     let humanThrow = rndInt(1, 6);
     let botThrow = rndInt(1, 6);
+    diceAnimation();
     let message = `Tu hai estratto ${humanThrow} mentre il computer ha estratto ${botThrow}. `;
     if (humanThrow > botThrow) {
         message = message + `Complimenti, hai vinto`
@@ -71,6 +74,9 @@ roll.addEventListener('click', function () {
         message = message + `Avete pareggiato `
     }
     document.getElementById('diceResult').innerHTML = message;
+
+    //dice animation
+
 });
 
 function rndInt(min, max) {
@@ -94,3 +100,25 @@ function animateError() {
         },
     );
 }
+
+function diceAnimation() {
+    for (let i = 0; i < 2; i++) {
+        diceList[i].animate(
+            [
+                // keyframes
+                { backgroundColor: "red", fontSize: "1em" },
+                { backgroundColor: "purple", fontSize: "1.5em" },
+                { backgroundColor: "blue", fontSize: "1em" },
+                { backgroundColor: "green", fontSize: "1.5em" },
+                { backgroundColor: "yellow", fontSize: "1em" }
+
+            ],
+            {
+                // timing options
+                duration: 3000,
+            },
+
+        );
+    }
+}
+
