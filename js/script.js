@@ -1,23 +1,3 @@
-/*
-<div class="container">
-        <div id="mail-wrapper">
-            <label for="mail">inserire la mail da vedere nella lista</label>
-            <input type="email" name="mail" id="mail">
-            <button id="mailCheck">controlla</button>
-            <div id="mailOutput">a</div>
-            <div id="mailError" class="text-danger">b</div>
-        </div>
-        <div id="dice-wrapper">
-            <label for="dice">premere "lancia il dado per generare il dado</label>
-            <button name="dice" id="dice">Lancia</button>
-            <div class="dice-output-wrapper">
-                <div class="diceOutput">asd</div>
-                <div class="diceOutput">asd</div>
-            </div>
-        </div>
-    </div>
-
-*/
 
 //database
 const mailList = [
@@ -29,6 +9,7 @@ const mailList = [
 const mailCheck = document.getElementById('mailCheck');
 //output
 const mailError = document.getElementById('mailError');
+const mailOutput = document.getElementById('mailOutput');
 
 mailCheck.addEventListener('click', function () {
     const email = document.getElementById('mail').value;
@@ -51,20 +32,41 @@ mailCheck.addEventListener('click', function () {
         }
         if (found) {
             resetMail();
-            document.getElementById('mailOutput').innerHTML = 'la mail appartiene alla lista';
+            mailOutput.innerHTML = 'la mail appartiene alla lista';
         } else {
             resetMail();
-            document.getElementById('mailOutput').innerHTML = 'spiacente, sembra che tu non ti sia registrato';
+            mailOutput.innerHTML = 'spiacente, sembra che tu non ti sia registrato';
         }
 
     }
 });
 
 function resetMail() {
-    document.getElementById('mailOutput').innerHTML = "";
-    document.getElementById('mailError').innerHTML = "";
+    mailOutput.innerHTML = "";
+    mailError.innerHTML = "";
 
     document.getElementById('mail').value = "";
 
     return;
+}
+
+roll = document.getElementById('dice');
+
+roll.addEventListener('click', function () {
+    let humanThrow = rndInt(1, 6);
+    let botThrow = rndInt(1, 6);
+    let message = `Tu hai estratto ${humanThrow} mentre il computer ha estratto ${botThrow}. `;
+    if (humanThrow > botThrow) {
+        message = message + `Complimenti, hai vinto`
+    } else if (humanThrow < botThrow) {
+        message = message + `Peccato, hai perso `
+    } else {
+        message = message + `Avete pareggiato `
+    }
+    document.getElementById('diceResult').innerHTML = message;
+});
+
+function rndInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+
 }
