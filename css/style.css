@@ -33,6 +33,23 @@ body {
     border: 0;
 }
 
+.diceRoll{
+    height: 100px;
+    width: 100px;
+    
+    
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2em;
+
+
+}
+
+#diceResult > *{
+    font-size: 20em;
+}
 
 
 
@@ -49,4 +66,3 @@ body {
         }
       }
 
-      

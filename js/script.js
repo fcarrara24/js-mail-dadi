@@ -64,18 +64,24 @@ roll = document.getElementById('dice');
 roll.addEventListener('click', function () {
     let humanThrow = rndInt(1, 6);
     let botThrow = rndInt(1, 6);
+    let content;
     diceAnimation();
-    let message = `Tu hai estratto ${humanThrow} mentre il computer ha estratto ${botThrow}. `;
-    if (humanThrow > botThrow) {
-        message = message + `Complimenti, hai vinto`
-    } else if (humanThrow < botThrow) {
-        message = message + `Peccato, hai perso `
-    } else {
-        message = message + `Avete pareggiato `
-    }
-    document.getElementById('diceResult').innerHTML = message;
+    setTimeout(function () {
+        diceList[0].innerHTML = humanThrow;
+        diceList[1].innerHTML = botThrow;
 
-    //dice animation
+        if (humanThrow > botThrow) {
+            content = `Grande, hai vinto`;
+        } else if (humanThrow < botThrow) {
+            content = `Peccato, hai perso `;
+        } else {
+            content = `Avete pareggiato `;
+        }
+        console.log
+        document.getElementById('diceResult').innerHTML = content;
+    }, 3000);
+
+
 
 });
 
@@ -103,14 +109,15 @@ function animateError() {
 
 function diceAnimation() {
     for (let i = 0; i < 2; i++) {
+        diceList[i].innerHTML = '?';
         diceList[i].animate(
             [
                 // keyframes
-                { backgroundColor: "red", fontSize: "1em" },
-                { backgroundColor: "purple", fontSize: "1.5em" },
-                { backgroundColor: "blue", fontSize: "1em" },
-                { backgroundColor: "green", fontSize: "1.5em" },
-                { backgroundColor: "yellow", fontSize: "1em" }
+                { fontSize: "1em", },
+                { fontSize: "2em" },
+                { fontSize: "1em" },
+                { fontSize: "2em" },
+                { backgroundColor: "white", fontSize: "1em", color: "white" }
 
             ],
             {
@@ -119,6 +126,9 @@ function diceAnimation() {
             },
 
         );
-    }
+
+    };
+
+
 }
 
