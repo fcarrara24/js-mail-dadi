@@ -6,20 +6,27 @@ const mailList = [
     "tizio.caio@gmail.com"
 ]
 
+
+
+
+const mailWrapper = document.getElementById('mailWrapper');
 const mailCheck = document.getElementById('mailCheck');
 //output
 const mailError = document.getElementById('mailError');
 const mailOutput = document.getElementById('mailOutput');
 
 mailCheck.addEventListener('click', function () {
+
     const email = document.getElementById('mail').value;
     if (email === "") {
         resetMail();
         mailError.innerHTML = " inserire un valore da valutare";
+        animateError();
 
     } else if (!(email.includes("@gmail.com"))) {
         resetMail();
         mailError.innerHTML = "inserire una mail in formato valido @gmail.com";
+        animateError();
     } else {
         //declaring it once so it doest recalculate each time
         const listLength = mailList.length;
@@ -69,4 +76,21 @@ roll.addEventListener('click', function () {
 function rndInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 
+}
+
+function animateError() {
+    //animation
+    document.getElementById("MailWrapper").animate(
+        [
+            // keyframes
+            { transform: "translatex(0px)" },
+            { transform: "translatex(-15px)" },
+            { transform: "translatex(15px)" },
+            { transform: "translatex(0px)" },
+        ],
+        {
+            // timing options
+            duration: 250,
+        },
+    );
 }

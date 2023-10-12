@@ -4,6 +4,11 @@
     min-width: 550px;
 }
 
+.titles { 
+    font-family: 'Helvetica Neue',sans-serif ; 
+    font-weight: bold;    
+}
+
 body {
     /* background covers the whole screen */
     height: 100vh;
@@ -17,17 +22,29 @@ body {
   }
   
 
+#mail{
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid grey;
+}
+
+#mail:focus-visible{
+    border: 0;
+}
+
+
+
+
   
- 
-  
-  @keyframes AnimateBG {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+    @keyframes AnimateBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
