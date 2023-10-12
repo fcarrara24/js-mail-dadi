@@ -16,6 +16,8 @@ const mailError = document.getElementById('mailError');
 const mailOutput = document.getElementById('mailOutput');
 const diceList = document.getElementsByClassName('diceRoll');
 
+let msg
+
 
 mailCheck.addEventListener('click', function () {
 
@@ -43,8 +45,13 @@ mailCheck.addEventListener('click', function () {
             resetMail();
             mailOutput.innerHTML = 'la mail appartiene alla lista';
         } else {
+            //store outside the cose
+            msg = document.getElementById('mail').value;
             resetMail();
-            mailOutput.innerHTML = 'spiacente, sembra che tu non ti sia registrato';
+
+            mailOutput.innerHTML = `<span class="pe-2">spiacente, sembra che tu non ti sia registrato</span> 
+            <button id="add" class="btn btn-primary" onclick="aggiungi()">Aggiungimi</button>`
+
         }
 
     }
@@ -75,7 +82,7 @@ roll.addEventListener('click', function () {
         } else if (humanThrow < botThrow) {
             content = `Peccato, hai perso `;
         } else {
-            content = `Avete pareggiato `;
+            content = `Avete pareggiato`;
         }
         console.log
         document.getElementById('diceResult').innerHTML = content;
@@ -132,3 +139,8 @@ function diceAnimation() {
 
 }
 
+function aggiungi() {
+    mailList.push(msg);
+    resetMail();
+    mailOutput.innerHTML = "hai aggiunto la mail alla lista con successo"
+}
